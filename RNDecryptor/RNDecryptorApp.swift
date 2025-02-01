@@ -21,6 +21,9 @@ struct RNDecryptorApp: App {
                     appDelegate.appState = appState
                 }
         }
+        .commands {
+            CustomAboutPanelCommand()
+        }
     }
 }
 
