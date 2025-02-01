@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDocumentTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeName</key>
+            <string>Encrypted File</string>
+            <!-- Declare the role of your app (Editor, Viewer, etc.) -->
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>LSHandlerRank</key>
+            <string>Owner</string>
+            <!-- Declare that this app can open data files -->
+            <key>LSItemContentTypes</key>
+            <array>
+                <string>public.data</string>
+                <string>ro.alinradut.encfile</string>
+            </array>
+            <!-- Associate the .enc extension -->
+            <key>CFBundleTypeExtensions</key>
+            <array>
+                <string>enc</string>
+            </array>
+        </dict>
+    </array>
+
+    <key>UTExportedTypeDeclarations</key>
+    <array>
+        <dict>
+            <!-- Define your custom UTI -->
+            <key>UTTypeIdentifier</key>
+            <string>ro.alinradut.encfile</string>
+            <key>UTTypeDescription</key>
+            <string>Encrypted File</string>
+            <!-- Indicate that this UTI conforms to public.data -->
+            <key>UTTypeConformsTo</key>
+            <array>
+                <string>public.data</string>
+            </array>
+            <!-- Specify the file extension and MIME type -->
+            <key>UTTypeTagSpecification</key>
+            <dict>
+                <key>public.filename-extension</key>
+                <array>
+                    <string>enc</string>
+                </array>
+                <key>public.mime-type</key>
+                <string>application/octet-stream</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

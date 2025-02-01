@@ -1,0 +1,15 @@
+{
+  "originHash" : "732d3f56f03df2cbd1eb954226ec3228a229c626b5af6fa8e6b86575cec70f69",
+  "pins" : [
+    {
+      "identity" : "rncryptor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RNCryptor/RNCryptor.git",
+      "state" : {
+        "revision" : "5e3bbf44f08bf90049537cb8902d8f4fa911a79a",
+        "version" : "5.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}
