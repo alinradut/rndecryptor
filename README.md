@@ -1,5 +1,5 @@
 # rndecryptor
-A macOS app build in SwiftUI which decrypts payloads encrypted using [RNCryptor](https://github.com/RNCryptor/RNCryptor).
+A macOS app built in SwiftUI which decrypts payloads encrypted using [RNCryptor](https://github.com/RNCryptor/RNCryptor).
 
 ![RNDecryptor for Mac](/screenshot.png)
 
