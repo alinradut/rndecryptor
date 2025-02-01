@@ -10,8 +10,19 @@
 		3B83598B2D4D48EB00451D35 /* RNCryptor in Frameworks */ = {isa = PBXBuildFile; productRef = 3B83598A2D4D48EB00451D35 /* RNCryptor */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3BC864DC2D4EB58500046FA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3B83596F2D4D48A200451D35 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3B8359762D4D48A200451D35;
+			remoteInfo = RNDecryptor;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3B8359772D4D48A200451D35 /* RNDecryptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RNDecryptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BC864D82D4EB58500046FA9 /* RNDecryptorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RNDecryptorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -33,6 +44,11 @@
 			path = RNDecryptor;
 			sourceTree = "<group>";
 		};
+		3BC864D92D4EB58500046FA9 /* RNDecryptorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = RNDecryptorTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +60,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3BC864D52D4EB58500046FA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				3B8359792D4D48A200451D35 /* RNDecryptor */,
+				3BC864D92D4EB58500046FA9 /* RNDecryptorTests */,
 				3B8359782D4D48A200451D35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				3B8359772D4D48A200451D35 /* RNDecryptor.app */,
+				3BC864D82D4EB58500046FA9 /* RNDecryptorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +114,29 @@
 			productReference = 3B8359772D4D48A200451D35 /* RNDecryptor.app */;
 			productType = "com.apple.product-type.application";
 		};
+		3BC864D72D4EB58500046FA9 /* RNDecryptorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BC864DE2D4EB58500046FA9 /* Build configuration list for PBXNativeTarget "RNDecryptorTests" */;
+			buildPhases = (
+				3BC864D42D4EB58500046FA9 /* Sources */,
+				3BC864D52D4EB58500046FA9 /* Frameworks */,
+				3BC864D62D4EB58500046FA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3BC864DD2D4EB58500046FA9 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				3BC864D92D4EB58500046FA9 /* RNDecryptorTests */,
+			);
+			name = RNDecryptorTests;
+			packageProductDependencies = (
+			);
+			productName = RNDecryptorTests;
+			productReference = 3BC864D82D4EB58500046FA9 /* RNDecryptorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -101,6 +149,10 @@
 				TargetAttributes = {
 					3B8359762D4D48A200451D35 = {
 						CreatedOnToolsVersion = 16.0;
+					};
+					3BC864D72D4EB58500046FA9 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 3B8359762D4D48A200451D35;
 					};
 				};
 			};
@@ -122,12 +174,20 @@
 			projectRoot = "";
 			targets = (
 				3B8359762D4D48A200451D35 /* RNDecryptor */,
+				3BC864D72D4EB58500046FA9 /* RNDecryptorTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3B8359752D4D48A200451D35 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BC864D62D4EB58500046FA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,7 +204,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		3BC864D42D4EB58500046FA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3BC864DD2D4EB58500046FA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3B8359762D4D48A200451D35 /* RNDecryptor */;
+			targetProxy = 3BC864DC2D4EB58500046FA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		3B8359842D4D48A400451D35 /* Debug */ = {
@@ -323,6 +398,40 @@
 			};
 			name = Release;
 		};
+		3BC864DF2D4EB58500046FA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V9Y9MXCH3R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.alinradut.RNDecryptorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNDecryptor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RNDecryptor";
+			};
+			name = Debug;
+		};
+		3BC864E02D4EB58500046FA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V9Y9MXCH3R;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ro.alinradut.RNDecryptorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNDecryptor.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RNDecryptor";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -340,6 +449,15 @@
 			buildConfigurations = (
 				3B8359872D4D48A400451D35 /* Debug */,
 				3B8359882D4D48A400451D35 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BC864DE2D4EB58500046FA9 /* Build configuration list for PBXNativeTarget "RNDecryptorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BC864DF2D4EB58500046FA9 /* Debug */,
+				3BC864E02D4EB58500046FA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

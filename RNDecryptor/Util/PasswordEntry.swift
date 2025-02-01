@@ -18,16 +18,17 @@ struct PasswordEntry: Codable, Identifiable, Equatable {
 
 class PasswordStore: ObservableObject {
     @Published var passwords: [PasswordEntry] = []
-
     private let userDefaultsKey = "SavedPasswords"
+    private let storage: UserDefaults
 
-    init() {
+    init(storage: UserDefaults = .standard) {
+        self.storage = storage
         loadPasswords()
     }
 
     /// Loads saved passwords from UserDefaults.
     func loadPasswords() {
-        if let data = UserDefaults.standard.data(forKey: userDefaultsKey),
+        if let data = storage.data(forKey: userDefaultsKey),
            let savedPasswords = try? JSONDecoder().decode([PasswordEntry].self, from: data) {
             self.passwords = savedPasswords
         }
@@ -36,7 +37,7 @@ class PasswordStore: ObservableObject {
     /// Saves the current list of passwords to UserDefaults.
     func savePasswords() {
         if let data = try? JSONEncoder().encode(passwords) {
-            UserDefaults.standard.set(data, forKey: userDefaultsKey)
+            storage.set(data, forKey: userDefaultsKey)
         }
     }
 
@@ -53,11 +54,5 @@ class PasswordStore: ObservableObject {
             passwords.remove(at: index)
             savePasswords()
         }
-    }
-
-    /// Alternatively, you can remove one or more passwords using IndexSet.
-    func removePassword(at offsets: IndexSet) {
-        passwords.remove(atOffsets: offsets)
-        savePasswords()
     }
 }

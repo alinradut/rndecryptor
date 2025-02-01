@@ -15,7 +15,18 @@ enum Decryptor {
     ///   - password: The password used for encryption.
     /// - Returns: A plaintext string if successful, otherwise throws.
     static func decryptString(_ encryptedString: String, password: String) throws -> String {
-        
+
+        let encryptor = RNCryptor.Encryptor(password: "supersecret")
+        let out = encryptor.encrypt(data: """
+        { 
+            "hello": 
+            "world", 
+            "this": "is an encrypted string"
+        }
+        """.data(using: .utf8)!)
+
+        print("\(out.base64EncodedString())")
+
         // If your encryptedString is base64-encoded, decode it:
         guard let encryptedData = Data(base64Encoded: encryptedString) ?? encryptedString.data(using: .utf8)
         else {
