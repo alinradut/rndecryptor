@@ -9,16 +9,30 @@ import XCTest
 
 class PasswordStoreTests: XCTestCase {
     var store: PasswordStore!
+    let service = "ro.alinradut.RNDecryptor.TestPasswordStore"
 
     override func setUp() {
         super.setUp()
-        let testDefaults = UserDefaults(suiteName: "TestPasswordStore")!
-        testDefaults.removePersistentDomain(forName: "TestPasswordStore") // Clear stored data
-        store = PasswordStore(storage: testDefaults)
+
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service
+        ]
+
+        SecItemDelete(query as CFDictionary)
+
+        store = PasswordStore(service: service)
     }
 
     override func tearDown() {
-        UserDefaults.standard.removePersistentDomain(forName: "TestPasswordStore")
+
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service
+        ]
+
+        SecItemDelete(query as CFDictionary)
+
         super.tearDown()
     }
 

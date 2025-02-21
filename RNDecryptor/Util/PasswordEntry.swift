@@ -8,6 +8,7 @@
 
 import Foundation
 import Combine
+import Security
 
 // A simple model representing a saved password.
 struct PasswordEntry: Codable, Identifiable, Equatable {
@@ -18,27 +19,21 @@ struct PasswordEntry: Codable, Identifiable, Equatable {
 
 class PasswordStore: ObservableObject {
     @Published var passwords: [PasswordEntry] = []
-    private let userDefaultsKey = "SavedPasswords"
-    private let storage: UserDefaults
+    private let service: String
 
-    init(storage: UserDefaults = .standard) {
-        self.storage = storage
+    init(service: String = "ro.alinradut.RNDecryptor") {
+        self.service = service
         loadPasswords()
     }
 
-    /// Loads saved passwords from UserDefaults.
+    /// Loads saved passwords from the Keychain.
     func loadPasswords() {
-        if let data = storage.data(forKey: userDefaultsKey),
-           let savedPasswords = try? JSONDecoder().decode([PasswordEntry].self, from: data) {
-            self.passwords = savedPasswords
-        }
+        passwords = retrievePasswords() ?? []
     }
 
-    /// Saves the current list of passwords to UserDefaults.
+    /// Saves the current list of passwords to the Keychain.
     func savePasswords() {
-        if let data = try? JSONEncoder().encode(passwords) {
-            storage.set(data, forKey: userDefaultsKey)
-        }
+        storePasswords(passwords)
     }
 
     /// Adds a new password entry.
@@ -54,5 +49,37 @@ class PasswordStore: ObservableObject {
             passwords.remove(at: index)
             savePasswords()
         }
+    }
+
+    private func storePasswords(_ passwords: [PasswordEntry]) {
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(passwords) {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrService as String: service,
+                kSecValueData as String: data
+            ]
+
+            SecItemDelete(query as CFDictionary)
+            SecItemAdd(query as CFDictionary, nil)
+        }
+    }
+
+    private func retrievePasswords() -> [PasswordEntry]? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: service,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+
+        var result: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+
+        if status == errSecSuccess, let data = result as? Data {
+            let decoder = JSONDecoder()
+            return try? decoder.decode([PasswordEntry].self, from: data)
+        }
+        return nil
     }
 }

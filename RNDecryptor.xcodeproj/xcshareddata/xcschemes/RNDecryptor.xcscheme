@@ -35,7 +35,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3BC864CA2D4EB57000046FA9"
+               BlueprintIdentifier = "3BC864D72D4EB58500046FA9"
                BuildableName = "RNDecryptorTests.xctest"
                BlueprintName = "RNDecryptorTests"
                ReferencedContainer = "container:RNDecryptor.xcodeproj">
