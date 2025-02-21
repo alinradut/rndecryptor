@@ -202,11 +202,19 @@ struct ContentView: View {
             // Decrypt file in memory.
             let decryptedData = try Decryptor.decryptFileData(at: filePath, with: password)
 
+            var fileName = (filePath as NSString).lastPathComponent
+            if (fileName as NSString).pathExtension == "enc" {
+                fileName = (fileName as NSString).deletingPathExtension
+            }
+            else {
+                fileName = fileName.appending(".decrypted")
+            }
+
             // Prompt user for a save location.
             let savePanel = NSSavePanel()
             savePanel.title = "Save Decrypted File"
             savePanel.message = "Choose a location to save the decrypted file."
-            savePanel.nameFieldStringValue = "DecryptedFile"
+            savePanel.nameFieldStringValue = fileName
 
             if savePanel.runModal() == .OK, let saveURL = savePanel.url {
                 try decryptedData.write(to: saveURL)
